@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.gcu</groupId>
 	<artifactId>Milestone</artifactId>
-	<version>4</version>
+	<version>5</version>
 	<name>Milestone</name>
-	<description>CLC Milestone for CST339</description>
+	<description>Milestone for CST339</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
