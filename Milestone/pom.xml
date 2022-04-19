@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gcu</groupId>
 	<artifactId>Milestone</artifactId>
-	<version>5</version>
+	<version>8</version>
 	<name>Milestone</name>
 	<description>Milestone for CST339</description>
 	<properties>
