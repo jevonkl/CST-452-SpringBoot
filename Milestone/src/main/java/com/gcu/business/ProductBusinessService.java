@@ -51,6 +51,20 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
 	}
 
 	@Override
+	public List<ProductModel> searchByGameName(String searchTerm) {
+		// TODO Auto-generated method stub
+		// List for entity
+		List<ProductEntity> pe = service.searchByGameName(searchTerm);
+		// makes a new list for the games
+		List<ProductModel> games = new ArrayList<ProductModel>();
+		for (ProductEntity ent : pe) {
+			games.add(new ProductModel(ent.getId(), ent.getGameNo(), ent.getGameName(), ent.getPrice(),
+					ent.getQuantity()));
+		}
+		return games;
+	}
+
+	@Override
 	public void init() {
 		System.out.println("In the OrdersBusinessService.init()");
 	}
@@ -79,4 +93,5 @@ public class ProductBusinessService implements ProductBusinessServiceInterface {
 		}
 		return games;
 	}
+
 }

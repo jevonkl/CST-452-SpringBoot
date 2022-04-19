@@ -1,8 +1,8 @@
 package com.gcu.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * 
@@ -10,15 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 
  */
 @Controller
-@RequestMapping("/")
 public class IndexController {
-	/**
-	 * This function routes from / to the actual index page
-	 * 
-	 * @return
-	 */
+
 	@GetMapping("/")
-	public String display() {
+	public String home(Model model) {
+		model.addAttribute("title", "My Index");
 		return "index";
 	}
 

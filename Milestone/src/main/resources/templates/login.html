@@ -75,19 +75,19 @@
 
 <body>
 	<div layout:fragment="content" class="container">
-		<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
+		<form action="#" th:action="@{/login}" method="post">
 			<h1>Login</h1>
 			<p>Please fill out this form to login.</p>
 			<hr>
 			<label for="psw"><b>Username</b></label>
-			<input type="text" th:field="*{username}" placeholder="Enter Username..." name="psw" id="psw" required>
+			<input type="text" placeholder="Enter Username..." name="psw" id="psw" required>
 
 			<label for="psw-repeat"><b>Password</b></label>
-			<input type="password" th:field="*{password}" placeholder="Enter Password..." name="psw-repeat"
+			<input type="password"  placeholder="Enter Password..." name="psw-repeat"
 				id="psw-repeat" required>
 			<hr>
 			
-			<button type="submit" class="registerbtn">Login</button>
+			<button type="submit" value="Sign In" class="registerbtn">Login</button>
 
 
 

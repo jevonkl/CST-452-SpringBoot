@@ -68,4 +68,10 @@ public class ProductsDataService implements DataAccessInterface<ProductEntity> {
 		return game;
 	}
 
+	public List<ProductEntity> searchByGameName(String searchTerm) {
+		// TODO Auto-generated method stub
+		List<ProductEntity> game = productsRepository.findByGameNameContainingIgnoreCase(searchTerm);
+		return game;
+	}
+
 }
