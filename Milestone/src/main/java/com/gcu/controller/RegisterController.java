@@ -26,7 +26,7 @@ public class RegisterController {
 	@PostMapping("/doRegister")
 	public String doRegister(@Valid RegisterModel registerModel, BindingResult bindingResult, Model model) {
 		// Outputs items to the console
-		System.out.println(String.format("User registered. Username : %s and Password: %s", registerModel.getUsername(),
+		System.out.println(String.format("User registered. Username : %s and Password: %s", registerModel.getUserName(),
 				registerModel.getPassword()));
 
 		// Checks if the inputed registerModel meets the requirements of it's
@@ -39,7 +39,7 @@ public class RegisterController {
 
 		// Points User to the loginSuccess page after successfully registering a user
 		model.addAttribute("title", "Register Success");
-		return "loginSuccess";
+		return "index";
 	}
 
 }
