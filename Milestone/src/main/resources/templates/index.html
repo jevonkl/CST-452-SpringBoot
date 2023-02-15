@@ -1,17 +1,20 @@
-
 <!DOCTYPE html>
 <html>
 
 <head>
 
-<title>Casa De Jvo</title>
+<title>Perosnal Portfolio</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width" />
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel='stylesheet' href="/css/main.css/" />	
-	<script src= "js/pagescript.js/"></script>
+	<script th:src= "@{js/pagescript.js/}"></script>
+	<script src= "https://smtpjs.com/v3/smtp.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+	</script>
+	
 		
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,12 +22,13 @@
 
 
 <body id="myPage">
-
+  
 <!-- Sidebar on click -->
 <nav class="w3-sidebar w3-bar-block w3-white w3-card w3-animate-left w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-text-teal">Close
     <i class="fa fa-remove"></i>
   </a>
+  More Info will be added here with more projects...
 </nav>
 
 <!-- Navbar -->
@@ -39,9 +43,7 @@
   <div class="w3-dropdown-hover w3-hide-small" id="dd">
   <button class="w3-button" title="Notifications"><i class="fa fa-user"></i></button>
   <div class="w3-dropdown-content w3-card-4 w3-bar-block" id="dd-content">
-      <a href="#" class="w3-bar-item w3-button">Profile</a>
-      <a href="#" class="w3-bar-item w3-button">Logout</a>
-      <a href="#" class="w3-bar-item w3-button">About Me</a>
+      <a th:href="@{/products/gameGuy}" class="w3-bar-item w3-button">More About Me</a>
   </div>
   </div> 
  </div>
@@ -51,8 +53,8 @@
     <a href="#team" class="w3-bar-item w3-button">The Team</a>
     <a href="#work" class="w3-bar-item w3-button">Projects</a>
     <a href="#contact" class="w3-bar-item w3-button">Contact Me</a>
-    <a href="#" class="w3-bar-item w3-button">Profile</a>
-    <a href="#" class="w3-bar-item w3-button">Logout</a>
+    <a th:href="@{/products/gameGuy}" class="w3-bar-item w3-button">More About Me</a>
+    
   </div>
 </div>
 
@@ -60,7 +62,7 @@
 <div class="w3-display-container w3-animate-opacity">
   <img th:src="@{/images/ag.png/}" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
   <div class="w3-container w3-display-bottomleft w3-margin-bottom">  
-    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To W3.CSS">Become A Member</button>
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-xlarge w3-theme w3-hover-teal" title="Go To W3.CSS">Learn More</button>
   </div>
 </div>
 
@@ -69,15 +71,16 @@
   <div class="w3-modal-content w3-card-4 w3-animate-top">
     <header class="w3-container w3-teal w3-display-container"> 
       <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
-      <h4>It's free to join, become a part of some cool stuff!</h4>
+      <h4>Below is a list of the things that made this possible</h4>
       <h5></h5>
     </header>
     <div class="w3-container">
-      <p>If your already signed up login below as well...</p>
-      <p>Go to <a class="w3-text-teal" href="/register/">Sign-Up</a> to sign up!</p>
+     <div id="chartContainer" style="height: 400px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> 
+     
     </div>
     <footer class="w3-container w3-teal">
-    	<p>stuff goes here</p>
+    	<p>More Info down Below</p>
     </footer>
   </div>
 </div>
@@ -90,27 +93,28 @@
 <div class="w3-row"><br>
 
 <div class="w3-quarter">
-  <img src="#" alt="Teacher" style="width:45%" class="w3-circle w3-hover-opacity">
+  <img th:src="@{images/gcup.jfif/}" alt="Teacher" style="width:45%" class="w3-circle">
   <h3>James Sparks</h3>
-  <p>Title</p>
+  <a th:href= "@{https://www.linkedin.com/in/james-sparks-8b947110/}">Java Instructor</a>
+  
 </div>
 
 <div class="w3-quarter">
-  <img src="#" alt="Teacher" style="width:45%" class="w3-circle w3-hover-opacity">
+  <img th:src="@{images/gcup.jfif/}" alt="Teacher" style="width:45%" class="w3-circle">
   <h3>Michael Landreth</h3>
-  <p>Title</p>
+  <a th:href="@{https://www.linkedin.com/in/michael-landreth-4a257ab/}"><p>Senior Project II Instructor</p></a>
 </div>
 
 <div class="w3-quarter">
-  <img src="#" alt="Teacher" style="width:45%" class="w3-circle w3-hover-opacity">
+  <img th:src="@{images/gcup.jfif/}" alt="Teacher" style="width:45%" class="w3-circle">
   <h3>Jevon Jackson</h3>
-  <p>Title</p>
+  <a th:href="@{https://www.linkedin.com/in/prof-jevonjackson/}"><p>Program Chair & Lead</p></a>
 </div>
 
 <div class="w3-quarter">
-  <img src="#" alt="Teacher" style="width:45%" class="w3-circle w3-hover-opacity">
+  <img th:src="@{images/gcup.jfif/}" alt="Teacher" style="width:45%" class="w3-circle">
   <h3>Michael Sarlo</h3>
-  <p>Title</p>
+  <a th:href="@{https://www.ratemyprofessors.com/professor?tid=2657511}"><p>Algorithms & Data Structures Instructor</p></a>
 </div>
 
 </div>
@@ -126,10 +130,10 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/snow.jpg" alt="Picture" style="width:100%">
+  <img src="/images/sbl.png" alt="Picture" style="width:100%">
   <div class="w3-container">
-  <h3>Project 1</h3>
-  <h4>TBD</h4>
+  <h3>SpringBoot Project</h3>
+  <a href="https://www.loom.com/share/17b0f120c2434c618f3878accff5c17b"><h4>Link to Video for Project</h4></a>
   
   </div>
   </div>
@@ -137,10 +141,10 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/lights.jpg" alt="Picture" style="width:100%">
+  <img src="/images/linux.webp" alt="Picture" style="width:100%" >
   <div class="w3-container">
-  <h3>Project 2</h3>
-  <h4>TBD</h4>
+  <h3>Linux C Compiler Project</h3>
+  <a href="https://www.loom.com/share/ca1bf5b8ddbf403daa43014af0c13aa9"><h4>Link to Video for Project</h4></a>
  
   </div>
   </div>
@@ -150,7 +154,7 @@
 <div class="w3-card w3-white">
   <img src="/w3images/mountains.jpg" alt="Picture" style="width:100%">
   <div class="w3-container">
-  <h3>Project 3</h3>
+  <h3>Senior Project Walkthrough</h3>
   <h4>TBD</h4>
  
   </div>
@@ -176,22 +180,22 @@
       <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  jevonkl@gmail.com</p>
     </div>
+    <!--for email -->
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" target="_blank">
       <div class="w3-section">      
         <label>Name</label>
-        <input class="w3-input" type="text" name="Name" required>
+        <input class="w3-input" type="text" name="Name" id=name required>
       </div>
       <div class="w3-section">      
         <label>Email</label>
-        <input class="w3-input" type="text" name="Email" required>
+        <input class="w3-input" type="text" name="Email" id=email required>
       </div>
       <div class="w3-section">      
         <label>Message</label>
-        <input class="w3-input" type="text" name="Message" required>
+        <input class="w3-input" type="text" name="Message" id=msg required>
       </div>  
-
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+      <button type="submit" onClick="SendEmail()" class="w3-button w3-right w3-theme" name="send">Send</button>
       </form>
     </div>
   </div>

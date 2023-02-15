@@ -1,101 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="layouts/defaultTemplate">
 
-<head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-	<title>Milestone Login Page</title>
-	<style>
-		body {
-			font-family: Arial, Helvetica, sans-serif;
-			background-color: black;
-		}
-
-		* {
-			box-sizing: border-box;
-		}
-
-		/* Add padding to containers */
-		.container {
-			padding: 16px;
-			background-color: white;
-		}
-
-		/* Full-width input fields */
-		input[type=text],
-		input[type=password] {
-			width: 100%;
-			padding: 15px;
-			margin: 5px 0 22px 0;
-			display: inline-block;
-			border: none;
-			background: #f1f1f1;
-		}
-
-		input[type=text]:focus,
-		input[type=password]:focus {
-			background-color: #ddd;
-			outline: none;
-		}
-
-		/* Overwrite default styles of hr */
-		hr {
-			border: 1px solid #f1f1f1;
-			margin-bottom: 25px;
-		}
-
-		/* Set a style for the submit button */
-		.registerbtn {
-			background-color: #04AA6D;
-			color: white;
-			padding: 16px 20px;
-			margin: 8px 0;
-			border: none;
-			cursor: pointer;
-			width: 100%;
-			opacity: 0.9;
-		}
-
-		.registerbtn:hover {
-			opacity: 1;
-		}
-
-		/* Add a blue text color to links */
-		a {
-			color: dodgerblue;
-		}
-
-		/* Set a grey background color and center the text of the "sign in" section */
-		.signin {
-			background-color: #f1f1f1;
-			text-align: center;
-		}
-	</style>
+<head> 
+<title>Game Editor</title>
 </head>
 
 <body>
-	<div layout:fragment="content" class="container">
-		<form action="#" th:action="@{doLogin}" th:object="${loginModel}" method="post">
-			<h1>Login</h1>
-			<p>Please fill out this form to login.</p>
-			<hr>
-			<label for="psw"><b>Username</b></label>
-			<input type="text" placeholder="Enter Username..." name="psw" id="psw" required>
+	<div layout:fragment="content" class="container-xl">
+		<h2 class="page-title">Game List:</h2>
 
-			<label for="psw-repeat"><b>Password</b></label>
-			<input type="password"  placeholder="Enter Password..." name="psw-repeat"
-				id="psw-repeat" required>
-			<hr>
-			
-			<button type="submit" value="Sign In" class="registerbtn">Login</button>
+		<table class="table table-striped">
+			<tr class="table-primary">
+				<th>Game ID</th>
+				<th>Game Number</th>
+				<th>Game Name</th>
+				<th>Price</th>
+				<th>Copies</th>
 
+				<th>Delete</th>
+				<th>Edit</th>
+			</tr>
+			<tr th:each="product : ${products}">
+				<td th:text="${product.gameId}"></td>
+				<td th:text="${product.gameNo}"></td>
+				<td th:text="${product.gameName}"></td>
+				<td th:text="${product.price}"></td>
+				<td th:text="${product.quantity}"></td>
+				<td>
+					<form action="#" th:action="@{/products/deleteGame/}" th:object="${product}" method="post">
+						<input name="GameId" type="hidden" th:value="${product.gameId}">
+						<input name="GameNo" type="hidden" th:value="${product.gameNo}">
+						<input name="GameName" type="hidden" th:value="${product.gameName}">
+						<input name="Price" type="hidden" th:value="${product.price}">
+						<input name="Copies" type="hidden" th:value="${product.quantity}">
 
+						<button class="btn btn-danger" type="submit" name="deleteItem">Delete Game</button>
 
-			<p>Don't have an account? <a th:href="@{/register/}">Register</a>.</p>
+					</form>
+				</td>
+				<td>
+					<form action="#" th:action="@{/products/editGame/}" th:object="${product}" method="get">
 
-		</form>
+						<input name="GameId" type="hidden" th:value="${product.gameId}">
+						<input name="GameNo" type="hidden" th:value="${product.gameNo}">
+						<input name="GameName" type="hidden" th:value="${product.gameName}">
+						<input name="Price" type="hidden" th:value="${product.price}">
+						<input name="Quantity" type="hidden" th:value="${product.quantity}">
+
+						<button class="btn btn-crud" type="submit" name="editGame">Edit Game</button>
+
+					</form>
+				</td>
+			</tr>
+		</table>
 	</div>
-
 </body>
 
 </html>

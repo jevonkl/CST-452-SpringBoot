@@ -24,6 +24,14 @@ import com.gcu.model.SearchModel;
 @RequestMapping("/products")
 public class ProductController {
 
+	@GetMapping("/")
+	public String display(Model model) {
+
+		model.addAttribute("title", "Game Form");
+		model.addAttribute("productModel", new ProductModel());
+		return "game";
+	}
+
 	@Autowired
 	private ProductBusinessServiceInterface service;
 
